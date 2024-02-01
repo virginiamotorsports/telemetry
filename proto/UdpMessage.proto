@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "VehicleData.proto";
+import "PerceptionData.proto";
+import "TrajectoryData.proto";
+import "BaseToCar.proto";
+
+message UdpMessage {
+    oneof udp_data {
+        VehicleData vehicle_data = 1;
+        PerceptionData perception_data = 2;
+        TrajectoryData trajectory_data = 3;
+        BaseToCar bst_data = 4;
+    }
+    bool udp_end = 5;
+}
+

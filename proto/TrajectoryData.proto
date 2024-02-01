@@ -1,0 +1,16 @@
+syntax = "proto3";
+message TrajectoryData {
+    repeated Trajectory trajectories = 1;
+}
+
+message Trajectory {
+    enum TrajectoryId {
+        REFERENCE = 0;
+        FEASIBLE = 1;
+        OPPONENT = 2;
+    }
+    TrajectoryId id = 1;
+    bool fresh = 2;
+    repeated float path_x = 3;
+    repeated float path_y = 4;
+}

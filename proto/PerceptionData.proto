@@ -1,0 +1,22 @@
+syntax = "proto3";
+message PerceptionData {
+    repeated Detection detections = 1;
+}
+
+message Detection {
+    enum DetectionId {
+        LIDAR = 0;
+        RADAR = 1;
+        CLUSTERING = 2;
+        DNN = 3;
+        EKF = 4;
+        GHOST = 5;
+    }
+    DetectionId id = 1;
+    bool source_died = 2;
+    bool fresh = 3;
+    float velocity = 4;
+    float angle = 5;
+    float center_x = 6;
+    float center_y = 7;
+}

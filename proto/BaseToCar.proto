@@ -1,0 +1,20 @@
+syntax = "proto3";
+message BaseToCar {
+    uint32 counter = 1;
+    uint32 emergency_stop = 2;
+    uint32 joy_enable = 3;
+    float steering_cmd = 4;
+    float brake_cmd = 5;
+    float accelerator_cmd = 6;
+    float gear_cmd = 7;
+    float desired_velocity = 8;
+    string switch_path = 9;
+    int32 ct_input = 10;
+    int32 enable_lon = 11;
+    int32 enable_lat = 12;
+    int32 enable_mpc = 13;
+    int32 follow_dist = 14;
+    int32 track_flag = 15;
+    int32 veh_flag = 16;
+    int32 def_speed = 17;
+}
