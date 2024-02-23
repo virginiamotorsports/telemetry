@@ -2,8 +2,8 @@ from serial import Serial, SerialBase
 import time, random
 import numpy as np
 import helloWorldTest_pb2
-ser = Serial("/dev/ttyUSB1", 115200)
-   
+ser = Serial("/dev/ttyUSB0", 115200)
+import struct
 # Send character 'S' to start the program
 # ser.write(bytearray('S','ascii'))
 #random_bytes = lambda n:bytearray(map(random.getrandbits,(8,)*n))
@@ -11,6 +11,9 @@ ser = Serial("/dev/ttyUSB1", 115200)
 # message.text = "Hello World!"
 # message.text.encode
 # Read line   
+
+n=0
+
 while True:
     # n = 199
     # print("Hello World!")
@@ -21,7 +24,10 @@ while True:
     # print(bytearray(bytesarr.tolist()))
     # print(len(bytesarr))
     #ser.write(bytearray(bytesarr.tolist()))
-    
-    ser.write(bytearray("Hello World!", 'ascii'))
-    
-    time.sleep(.0975)
+    n=n+1
+    t = time.time_ns()
+    c = 0xab
+    print(t+n+c)
+    packet = struct.pack("QHH", t,n,c)
+    ser.write(packet)
+    time.sleep(.05)
